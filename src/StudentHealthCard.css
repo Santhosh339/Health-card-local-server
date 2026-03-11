@@ -1,0 +1,756 @@
+.health-card-wrapper {
+    position: relative;
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.health-card-container {
+    padding: 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    background: #f8fafc;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+.btn-back-link-floating {
+    position: fixed;
+    top: 80px;
+    left: 40px;
+    background: white;
+    border: 1px solid #cbd5e1;
+    padding: 0.4rem 1rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: #1e3a8a;
+    font-weight: 700;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.2s ease;
+}
+
+.btn-back-link-floating:hover {
+    background: #f1f5f9;
+    transform: translateX(-5px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1200px) {
+    .btn-back-link-floating {
+        position: relative;
+        top: 0;
+        left: 0;
+        margin: 0.5rem;
+        display: inline-flex;
+    }
+}
+
+/* ID Card Styles */
+.id-card-display-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: #e2e8f0;
+    min-height: 100vh;
+}
+
+.id-card-layout-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    max-width: 100%;
+}
+
+.id-card-side-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btn-side-control {
+    background: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 100px;
+}
+
+.btn-side-control:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-side-control.back {
+    color: #64748b;
+}
+
+.btn-side-control.print {
+    color: #1e3a8a;
+}
+
+.btn-side-control span {
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.id-card-main {
+    width: 350px;
+    height: 520px;
+    display: flex;
+    background: #fff;
+    border: 2px solid #333;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    transform-origin: top center;
+}
+
+@media (max-width: 400px) {
+    .id-card-main {
+        transform: scale(0.85);
+        margin-bottom: -80px;
+        /* Offset for scaled height */
+    }
+}
+
+/* Left edge color tabs - exactly as per image */
+.id-card-left-tabs {
+    width: 15px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.id-card-left-tabs .tab {
+    flex: 1;
+    width: 100%;
+}
+
+.tab-blue {
+    background-color: #00aeef;
+}
+
+.tab-green {
+    background-color: #22b14c;
+}
+
+.tab-yellow {
+    background-color: #fff200;
+}
+
+.tab-orange {
+    background-color: #ff7f27;
+}
+
+.tab-pink {
+    background-color: #ed1c24;
+}
+
+/* Main card right side with light pinkish bg */
+.id-card-right.full-card {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 0.2rem 0.7rem 0.75rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    text-align: left;
+}
+
+.id-card-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.id-hospital-logo-plus {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #00aeef44, #fff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.plus-bg {
+    color: #ed1c24;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.id-hospital-name-wrapper {
+    text-align: right;
+}
+
+.id-hospital-name-text {
+    color: #1e3a8a;
+    font-weight: 800;
+    font-size: 1.1rem;
+    border-bottom: 2px solid #ed1c24;
+    margin: 0;
+}
+
+.unit-badge {
+    background: #00aeef;
+    color: #fff200;
+    font-weight: 800;
+    border-radius: 20px;
+    padding: 1px 8px;
+    font-size: 0.7rem;
+    display: inline-block;
+    margin-top: 1px;
+}
+
+.id-card-center-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.id-center-logo-img {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    margin-top: -14px;
+}
+
+.id-card-title-red {
+    text-align: center;
+    color: #003fbc;
+    font-weight: 800;
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+}
+
+.id-card-title-red span {
+    text-align: center;
+    color: #ed1c24;
+    font-weight: 1000;
+    font-size: 0.95rem;
+}
+
+.underline-text {
+    text-decoration: underline;
+    display: block;
+}
+
+.id-card-body-row {
+    display: flex;
+    gap: 2rem;
+    margin-top: 0.5rem;
+}
+
+.id-photo-frame {
+    width: 100px;
+    height: 130px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    border: 1px solid #94a3b8;
+    overflow: hidden;
+    margin-left: 1.5rem;
+}
+
+.id-photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.empty-photo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.id-top-lines {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.dotted-field {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    padding-bottom: 2px;
+}
+
+.id-student-info-main {
+    margin-top: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-left: 20px;
+}
+
+.dotted-field-block {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: flex;
+    align-items: baseline;
+    gap: 0.25rem;
+    justify-content: center;
+}
+
+.dotted-field-block .label {
+    color: #333;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.field-value {
+    color: #1e3a8a;
+    text-transform: uppercase;
+    flex: 1;
+}
+
+.dots {
+    color: #333;
+    font-weight: normal;
+}
+
+.id-card-footer-flex {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.footer-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: #1a1a1a;
+}
+
+.corner-seal-gradient {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 60px;
+    background: linear-gradient(to top left, #00aeef, #00aeef33 50%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+@media print {
+
+    .btn-side-control,
+    .id-card-side-controls,
+    .btn-back-link-floating,
+    .health-card-header {
+        display: none !important;
+    }
+
+    .id-card-display-container {
+        background: #fff;
+        padding: 0;
+        display: block;
+    }
+
+    .id-card-layout-wrapper {
+        display: block;
+        margin: 0;
+        gap: 0;
+    }
+
+    .id-card-main {
+        box-shadow: none;
+        border: 1px solid #000;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        margin: 0 auto;
+    }
+}
+
+.btn-print-id {
+    background: #1e3a8a;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.health-card-header {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 125px;
+    /* Stick exactly below the main navigation bar */
+    z-index: 100;
+    /* Ensure it stays above form content but below main nav */
+    border: 1px solid #f9f9f9;
+}
+
+.health-card-header h1 {
+    color: #5D01E8;
+    font-size: 1.1rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.health-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.card-section {
+    position: relative;
+    background: white;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e2e8f0;
+    margin-bottom: 0.2rem;
+}
+
+/* Background Themes for Form Sections */
+.bg-blue-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #00aeef;
+}
+
+.bg-green-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #22b14c;
+}
+
+.bg-yellow-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #fff200;
+}
+
+.bg-orange-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #ff7f27;
+}
+
+.bg-pink-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #ed1c24;
+}
+
+.bg-cyan-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #00ced1;
+}
+
+.bg-purple-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #9b59b6;
+}
+
+.bg-gray-theme {
+    background-color: #ffffff;
+    border-left: 4px solid #94a3b8;
+}
+
+.card-section-title {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 0.1rem;
+    padding-bottom: 0;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.card-section-title svg {
+    color: #3b82f6;
+    width: 12px;
+    height: 12px;
+}
+
+.card-section-title h2 {
+    color: #1e293b;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.25rem 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    padding: 2px 0;
+    padding-right: 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .input-group {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+
+    .input-group label {
+        min-width: 100% !important;
+    }
+}
+
+.input-group label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #334155;
+    white-space: nowrap;
+    min-width: max-content;
+}
+
+.input-group input,
+.input-group select,
+.input-group textarea {
+    flex: 1;
+    padding: 0.1rem 0.2rem;
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    border-radius: 0;
+    font-size: 0.8rem;
+    color: #1e293b;
+    background: transparent;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-bottom-color: #3b82f6;
+}
+
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+    color: #94a3b8;
+    opacity: 1;
+    font-style: italic;
+    font-weight: 500;
+}
+
+/* Override browser autofill background */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover,
+.input-group input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+    -webkit-text-fill-color: #1e293b !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-group textarea {
+    border: 1px solid #cbd5e1;
+    border-radius: 2px;
+    margin-top: 0;
+    min-height: 24px;
+}
+
+.radio-group-horizontal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    padding: 2px 0;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: #334155;
+}
+
+.radio-option input {
+    width: 11px;
+    height: 11px;
+    margin: 0;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.1rem;
+}
+
+.skill-input-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fcfdfe;
+    padding: 0.1rem 0.3rem;
+    border-radius: 2px;
+    border: 1px solid #f1f5f9;
+}
+
+.skill-input-item label {
+    font-weight: 600;
+    color: #475569;
+    font-size: 0.7rem;
+}
+
+.skill-input-item .percentage-input {
+    width: 45px;
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+}
+
+.skill-input-item input {
+    width: 100%;
+    text-align: right;
+    padding: 1px 0;
+    border: none;
+    border-bottom: 1px solid #cbd5e1;
+    font-size: 0.75rem;
+    background: transparent;
+}
+
+/* Error States */
+.input-group.has-error input,
+.input-group.has-error select,
+.input-group.has-error textarea,
+.skill-input-item.has-error input {
+    border-bottom: 2px solid #ef4444 !important;
+    background-color: #fef2f2 !important;
+}
+
+.error-message {
+    color: #ef4444;
+    font-size: 0.65rem;
+    font-weight: 700;
+    margin-top: 1px;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-2px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.input-group.has-error label {
+    color: #ef4444 !important;
+}
+
+.submit-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.2rem;
+    margin-bottom: 0.25rem;
+}
+
+.btn-premium-save {
+    background: #1e3a8a;
+    color: white;
+    padding: 0.3rem 1rem;
+    border: none;
+    border-radius: 2px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.btn-back-link {
+    background: none;
+    border: none;
+    color: #64748b;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-bottom: 0.15rem;
+    font-size: 0.75rem;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+.photo-upload-section {
+    position: absolute;
+    right: 0.75rem;
+    top: 0.75rem;
+    border: 1px dashed #cbd5e1;
+    padding: 0.4rem;
+    border-radius: 4px;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px;
+}
+
+.photo-upload-section label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    margin-bottom: 2px;
+}
+
+.photo-upload-section input {
+    font-size: 0.6rem;
+    width: 100%;
+}
+
+.photo-preview-small {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    margin-top: 4px;
+    border-radius: 4px;
+    border: 1px solid #cbd5e1;
+}
+
+@media (max-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo-upload-section {
+        position: static;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+}

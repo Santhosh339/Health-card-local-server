@@ -1,0 +1,671 @@
+.card-editor-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f8fafc;
+    min-height: 100vh;
+    padding: 1.5rem;
+    position: relative;
+    font-family: 'Arial', sans-serif;
+    overflow-x: hidden;
+    max-width: 100vw;
+    box-sizing: border-box;
+}
+
+.identity-card-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: scale(1.35);
+    transform-origin: top center;
+    margin-bottom: 280px;
+    /* offset the scaled height so it doesn't overlap stuff below */
+}
+
+/* Base Physical Card - Vertical Layout */
+.id-card-physical {
+    width: 550px;
+    height: auto;
+    min-height: 750px;
+    padding-bottom: 50px;
+    /* Fixed height to match exactly */
+    background: #ffffff;
+    border: 2px solid #cdb36c;
+    /* Elegant golden border */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 0 0 8px #e9dbc0;
+    /* Thick golden rim */
+    overflow: hidden;
+    position: relative;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.id-card-inner {
+    border: 1px solid #cdb36c;
+    /* Inner gold line */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+    padding: 6px;
+    box-sizing: border-box;
+}
+
+/* TOP HEADER ROW */
+.id-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    padding: 0 0.5rem 0 0.25rem;
+    gap: 2px;
+}
+
+.id-logo-left {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.id-logo-left img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.header-school-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center school name by default */
+    justify-content: center;
+    position: relative;
+    margin: 0;
+    padding-left: 0px;
+}
+
+/* Red lines above and below school name */
+.header-school-center::before,
+.header-school-center::after {
+    display: none;
+}
+
+.header-school-input {
+    width: 100%;
+    text-align: center;
+    /* Smart centering: expands from middle outward */
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #e3000b;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Arial Black', 'Arial', sans-serif;
+    text-transform: uppercase;
+    z-index: 1;
+    word-break: break-all;
+}
+
+.header-school-input::placeholder {
+    color: #fca5a5;
+}
+
+.id-logo-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.years-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+.red-cross-logo {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+    margin-right: 5px;
+    position: relative;
+    background: #e3000b;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.red-cross-logo::before,
+.red-cross-logo::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 2px;
+}
+
+/* Horizontal bar */
+.red-cross-logo::before {
+    width: 65%;
+    height: 22%;
+}
+
+/* Vertical bar */
+.red-cross-logo::after {
+    width: 22%;
+    height: 65%;
+}
+
+/* BLUE BANNER */
+.id-blue-banner {
+    background-color: #004394;
+    color: white;
+    text-align: center;
+    padding: 0.6rem;
+    font-size: 1.15rem;
+    font-weight: 800;
+    line-height: 1.3;
+    border-radius: 31px;
+    margin: 0.2rem 0;
+    white-space: pre-wrap;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+}
+
+/* PHOTO & TOP FIELDS */
+.id-middle-section {
+    display: flex;
+    padding: 0.5rem 1rem 0;
+    gap: 1.5rem;
+    align-items: flex-start;
+}
+
+.id-photo-box {
+    width: 110px;
+    height: 135px;
+    background-color: #e5e5e5;
+    border-radius: 12px;
+    border: 1px solid #b0b0b0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #666;
+    cursor: pointer;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.id-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.id-top-fields {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    margin-top: 0.2rem;
+}
+
+/* STUDENT INFO FIELDS */
+.id-student-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+    /* Spread the fields out to organically fill vertical card space */
+    padding: 1rem 1rem 0.5rem 1rem;
+    flex-grow: 1;
+    /* push footer down naturally instead of an empty abyss */
+}
+
+/* DOTTED INPUT SYSTEM */
+.dotted-row {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.split-row {
+    display: flex;
+    align-items: flex-end;
+    width: 100%;
+}
+
+.row-label {
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
+    padding-bottom: 2px;
+    margin-right: 2px;
+}
+
+.red-row .row-label {
+    color: #a42c2e;
+    /* Darker red matching picture */
+}
+
+.blue-row .row-label {
+    color: #1c3d79;
+    /* Darker blue matching picture */
+}
+
+.dotted-input {
+    flex-grow: 1;
+    border: none;
+    border-bottom: 2px dotted #1c3d79;
+    /* Thick dots */
+    background: transparent;
+    outline: none;
+    font-size: 0.9rem;
+    color: #1a1a1a;
+    font-weight: 700;
+    padding-left: 5px;
+    font-family: 'Courier New', Courier, monospace;
+    /* To make it look like typed text */
+}
+
+.red-row .dotted-input {
+    border-bottom: 2px dotted #a42c2e;
+    color: #a42c2e;
+}
+
+.ml-2 {
+    margin-left: 0.5rem;
+}
+
+/* FOOTER SECTIONS (Sponsors & Signatures) */
+.id-footer-divider {
+    border-top: 3px dotted #1c3d79;
+    margin: 0 1rem;
+}
+
+.id-footer-logos {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 0rem 1rem 32px 1rem;
+    margin-top: auto;
+    text-align: center;
+}
+
+/* Left Sponsor */
+.left-maintenance {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100px;
+    margin-bottom: 0;
+}
+
+.left-maintenance img {
+    height: 40px;
+    object-fit: contain;
+}
+
+.sponsor-subtext-blue {
+    color: #1c3d79;
+    font-weight: 900;
+    font-size: 0.8rem;
+    margin-top: 2px;
+}
+
+.sponsor-subtext-black {
+    color: #000;
+    font-weight: 800;
+    font-size: 0.7rem;
+}
+
+/* Center Sponsor */
+.center-supported {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100px;
+    margin-bottom: 0;
+}
+
+.center-supported img {
+    height: 35px;
+    object-fit: contain;
+}
+
+/* Right Signature Box */
+.right-signature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100px;
+    margin-bottom: 12px;
+}
+
+.auth-sign-box {
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.paramedical-seal {
+    height: 60px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+    /* Make it look like a real stamp */
+}
+
+.seal-circle {
+    width: 60px;
+    height: 60px;
+    border: 2px solid #1c3d79;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.5rem;
+    color: #1c3d79;
+    font-weight: bold;
+    text-align: center;
+    line-height: 1.1;
+    transform: rotate(-15deg);
+}
+
+.auth-sign-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #000;
+}
+
+/* BOTTOM STRIPS - Split Red/Blue directly adjacent */
+.id-bottom-strips {
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+    height: 45px;
+    display: flex;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    overflow: hidden;
+}
+
+.strip-red {
+    flex: 0 0 45%;
+    /* slightly less than half */
+    background-color: #e3000b;
+    color: white;
+    font-size: 0.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 600;
+    border-top-right-radius: 20px;
+    /* Curve connecting to blue */
+    z-index: 2;
+}
+
+.strip-blue {
+    flex: 1;
+    /* Takes the rest */
+    background-color: #1c3d79;
+    color: white;
+    font-size: 0.75rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: 600;
+    margin-left: -15px;
+    /* Overlap behind red curve */
+    padding-left: 20px;
+    z-index: 1;
+}
+
+/* EDITOR ACTIONS */
+.card-editor-actions {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.btn-save-card {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    font-size: 1.25rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.3);
+    transition: all 0.2s;
+}
+
+.btn-save-card:hover:not(:disabled) {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(16, 185, 129, 0.4);
+}
+
+.btn-save-card:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- MOBILE RESPONSIVENESS AND SCALING --- */
+@media (max-width: 800px) {
+    .identity-card-form-wrapper {
+        transform: scale(1.0);
+        margin-bottom: 2rem;
+    }
+
+    .card-editor-container {
+        padding: 1rem 0.5rem 0.5rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .identity-card-form-wrapper {
+        transform: scale(0.85);
+        margin-bottom: -40px;
+    }
+}
+
+@media (max-width: 500px) {
+    .identity-card-form-wrapper {
+        transform: scale(0.7);
+        margin-bottom: -150px;
+    }
+
+    /* Compress the card internal content for mobile visibility */
+    .id-card-physical {
+        min-height: auto !important;
+        padding-bottom: 8px !important;
+        /* Strips should be at the absolute bottom */
+    }
+
+    .id-card-inner {
+        padding: 4px !important;
+    }
+
+    .id-header-row {
+        height: 45px !important;
+    }
+
+    .header-school-input {
+        font-size: 1rem !important;
+        padding-right: 8px !important;
+    }
+
+    .red-cross-logo {
+        width: 35px !important;
+        height: 35px !important;
+        min-width: 35px !important;
+        min-height: 35px !important;
+    }
+
+    .id-blue-banner {
+        font-size: 0.95rem !important;
+        padding: 0.5rem !important;
+        margin: 0.1rem 0 !important;
+    }
+
+    .id-middle-section {
+        padding-top: 0.2rem !important;
+        gap: 1rem !important;
+    }
+
+    .id-photo-box {
+        width: 85px !important;
+        height: 110px !important;
+    }
+
+    .id-student-info {
+        gap: 0.8rem !important;
+        padding-top: 0.5rem !important;
+    }
+
+    .row-label {
+        font-size: 0.85rem !important;
+    }
+
+    .dotted-input {
+        font-size: 0.85rem !important;
+    }
+
+    .id-footer-logos {
+        padding: 0 0.25rem 36px 0.25rem !important;
+        gap: 2px !important;
+        align-items: flex-start !important;
+        /* Align from the top so labels are on the same line */
+        justify-content: space-around !important;
+        margin-top: 0.3rem !important;
+    }
+
+    .left-maintenance,
+    .center-supported,
+    .right-signature {
+        height: 68px !important;
+        /* Fixed height for consistent alignment */
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        gap: 0 !important;
+    }
+
+    .left-maintenance img,
+    .center-supported img,
+    .right-signature img {
+        margin-top: auto !important;
+        /* Bottom-aligns all logos to keep them on one line */
+        margin-bottom: 2px !important;
+    }
+
+    .tiny-label {
+        font-size: 0.55rem !important;
+        line-height: normal !important;
+        height: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        color: #1e3a8a !important;
+        font-weight: 900 !important;
+        text-transform: uppercase !important;
+        margin-top: 2px !important;
+        margin-bottom: 12px !important;
+        /* Forces the requested space below the label */
+    }
+
+    .left-maintenance img {
+        height: 45px !important;
+    }
+
+    .center-supported img {
+        height: 28px !important;
+    }
+
+    .right-signature {
+        margin-bottom: 6px !important;
+    }
+
+    .right-signature img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+
+    .id-bottom-strips {
+        height: 35px !important;
+    }
+
+    .strip-red,
+    .strip-blue {
+        font-size: 0.65rem !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .identity-card-form-wrapper {
+        transform: scale(0.58);
+        margin-bottom: -220px;
+    }
+}
+
+/* --- PRINT & DOWNLOAD CONFIGURATION --- */
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    .id-card-physical,
+    .id-card-physical * {
+        visibility: visible;
+    }
+
+    .id-card-physical {
+        position: absolute;
+        left: 50% !important;
+        top: 0 !important;
+        transform: translateX(-50%) !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        border: 2px solid #cdb36c !important;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+}
